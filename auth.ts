@@ -10,4 +10,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({ providers: [ Crede
     const isValid = await bcrypt.compare(password, user.password); 
     if (!isValid) return null; 
     return { id: user.id, email: user.email, name: user.name }; 
-}, }), ], pages: { signIn: "/login", }, session: { strategy: "jwt", }, });
+}, }), ], pages: { signIn: "/login", }, session: { strategy: "jwt", }, 
+callbacks: { jwt({ token, user }) { 
+    if (user) token.id = user.id; 
+    return token; 
+}, session({ session, token }) { 
+    if (session.user) session.user.id = token.id as string; 
+    return session; }, },
+});

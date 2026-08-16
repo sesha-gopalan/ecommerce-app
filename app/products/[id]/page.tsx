@@ -1,3 +1,4 @@
+import AddToCartButton from "@/app/components/AddToCartButton";
 import { prisma } from "@/lib/prisma"; 
 import { notFound } from "next/navigation"; 
 export default async function ProductPage({ params, }: { params: Promise<{ id: string }>; }) { 
@@ -10,6 +11,7 @@ return (
     <p className="text-sm text-gray-500 mt-1">{product.category?.name}</p> 
     <p className="mt-4">{product.description}</p> 
     <p className="mt-4 text-2xl font-bold">₹{product.price}</p> 
-    <p className="mt-2 text-sm text-gray-500">{product.stock} in stock</p> 
+    <p className="mt-2 text-sm text-gray-500">{product.stock} in stock</p>
+    <AddToCartButton productId={product.id} />
     </main> ); 
 }
