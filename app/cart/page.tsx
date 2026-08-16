@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import CartItemControls from "@/app/components/CartItemControls";
+import CheckoutButton from "@/app/components/CheckoutButton";
 
 export default async function CartPage() {
   const session = await auth();
@@ -43,6 +44,7 @@ export default async function CartPage() {
             <span>Total</span>
             <span>₹{total}</span>
           </div>
+          <CheckoutButton />
         </div>
       )}
     </main>

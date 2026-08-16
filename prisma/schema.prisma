@@ -67,6 +67,7 @@ model Order {
   items      OrderItem[]
   totalPrice Float
   status     OrderStatus @default(PENDING)
+  razorpayOrderId String?
   createdAt  DateTime    @default(now())
 }
 
