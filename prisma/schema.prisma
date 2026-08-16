@@ -13,8 +13,8 @@ model User {
   name      String?
   role      Role     @default(CUSTOMER)
   orders    Order[]
-  createdAt DateTime @default(now())
   cart Cart?
+  createdAt DateTime @default(now())
 }
 
 enum Role {
@@ -32,8 +32,14 @@ model Product {
   category    Category?   @relation(fields: [categoryId], references: [id])
   categoryId  String?
   orderItems  OrderItem[]
-  createdAt   DateTime    @default(now())
   cartItems CartItem[]
+  createdAt   DateTime    @default(now())
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  products Product[]
 }
 
 model Cart { 
@@ -52,12 +58,6 @@ model CartItem {
   productId String 
   quantity Int @default(1) 
   @@unique([cartId, productId]) 
-}
-
-model Category {
-  id       String    @id @default(cuid())
-  name     String    @unique
-  products Product[]
 }
 
 model Order {

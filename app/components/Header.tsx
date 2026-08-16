@@ -9,7 +9,12 @@ export default function Header() {
         <div className="flex items-center gap-4"> {
             session?.user ? ( 
                 <> 
-                <span className="text-sm text-gray-600"> Logged in as {session.user.email} </span> 
+                <Link href="/cart" className="text-sm">
+                    Cart
+                </Link>
+                <span className="text-sm text-gray-600">
+                    Logged in as {session.user.email}
+                </span>
                 <button onClick={() => signOut({ callbackUrl: "/" })} className="text-sm bg-gray-100 px-3 py-1 rounded hover:bg-gray-200" > Log out </button> </> 
             ) : ( 
                     <> 
