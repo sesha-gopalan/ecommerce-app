@@ -54,6 +54,13 @@ export async function POST(request: Request) {
     },
   });
 
+  for (const item of cart.items) {
+    await prisma.product.update({
+      where: { id: item.productId },
+      data: { stock: { decrement: item.quantity } },
+    });
+  }
+
   await prisma.cartItem.deleteMany({ where: { cartId: cart.id } });
 
   return NextResponse.json({ success: true, orderId: order.id });
