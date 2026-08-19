@@ -15,6 +15,11 @@ export default function Header() {
                         <Link href="/orders" className="text-sm">
                             Orders
                         </Link>
+                        {session.user.role === "ADMIN" && (
+                            <Link href="/admin" className="text-sm font-semibold">
+                                Admin
+                            </Link>
+                        )}
                         <span className="text-sm text-gray-600">
                             Logged in as {session.user.email}
                         </span>
