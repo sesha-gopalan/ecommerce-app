@@ -22,8 +22,8 @@ export default async function CartPage() {
   );
 
   return (
-    <main className="p-8 max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Your Cart</h1>
+    <main className="max-w-2xl mx-auto px-6 py-10">
+      <h1 className="text-3xl font-bold tracking-tight mb-8">Your Cart</h1>
       {items.length === 0 ? (
         <p className="text-gray-500">Your cart is empty.</p>
       ) : (
@@ -31,11 +31,20 @@ export default async function CartPage() {
           {items.map((item) => (
             <div
               key={item.id}
-              className="flex justify-between items-center border rounded-lg p-4"
+              className="flex justify-between items-center bg-white border rounded-2xl p-4 shadow-sm"
             >
-              <div>
-                <p className="font-semibold">{item.product.name}</p>
-                <p className="text-sm text-gray-500">₹{item.product.price}</p>
+              <div className="flex items-center gap-4">
+                {item.product.imageUrl && (
+                  <img
+                    src={item.product.imageUrl}
+                    alt={item.product.name}
+                    className="w-16 h-16 object-cover rounded-lg"
+                  />
+                )}
+                <div>
+                  <p className="font-semibold">{item.product.name}</p>
+                  <p className="text-sm text-gray-500">₹{item.product.price}</p>
+                </div>
               </div>
               <CartItemControls itemId={item.id} quantity={item.quantity} />
             </div>

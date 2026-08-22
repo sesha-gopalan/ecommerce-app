@@ -81,7 +81,7 @@ export default function CheckoutButton() {
     <button
       onClick={handleCheckout}
       disabled={loading}
-      className="bg-black text-white rounded px-6 py-3 hover:bg-gray-800 disabled:opacity-50 w-full mt-4"
+      className="bg-indigo-600 text-white rounded-full px-6 py-3 font-medium hover:bg-indigo-700 transition disabled:opacity-50 w-full mt-4"
     >
       {loading ? "Loading..." : "Proceed to Checkout"}
     </button>

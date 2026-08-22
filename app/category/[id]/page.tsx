@@ -47,11 +47,11 @@ export default async function CategoryPage({
     }
 
     return (
-        <main className="p-8">
-            <Link href="/" className="text-sm text-gray-500 hover:underline">
+        <main className="max-w-6xl mx-auto px-6 py-10">
+            <Link href="/" className="text-sm text-indigo-600 hover:underline">
                 ← Back to home
             </Link>
-            <h1 className="text-3xl font-bold my-6">{category.name}</h1>
+            <h1 className="text-3xl font-bold tracking-tight my-6">{category.name}</h1>
 
             {allSpecs.length > 0 && (
                 <div className="flex flex-wrap gap-2 mb-8">
@@ -61,9 +61,9 @@ export default async function CategoryPage({
                             <Link
                                 key={spec}
                                 href={specToggleHref(spec)}
-                                className={`text-sm px-3 py-1 rounded-full border ${isSelected
-                                        ? "bg-black text-white border-black"
-                                        : "bg-white text-gray-700 border-gray-300 hover:border-gray-500"
+                                className={`text-sm px-4 py-1.5 rounded-full border transition ${isSelected
+                                        ? "bg-indigo-600 text-white border-indigo-600"
+                                        : "bg-white text-gray-700 border-gray-300 hover:border-indigo-400"
                                     }`}
                             >
                                 {spec}
@@ -73,7 +73,7 @@ export default async function CategoryPage({
                     {selectedSpecs.length > 0 && (
                         <Link
                             href="?"
-                            className="text-sm px-3 py-1 text-gray-500 hover:underline self-center"
+                            className="text-sm px-3 py-1.5 text-gray-500 hover:underline self-center"
                         >
                             Clear filters
                         </Link>
@@ -87,12 +87,12 @@ export default async function CategoryPage({
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
                     {products.map((product) => (
                         <Link key={product.id} href={`/products/${product.id}`}>
-                            <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                            <div className="bg-white border rounded-2xl p-4 shadow-sm hover:shadow-md transition">
                                 {product.imageUrl && (
                                     <img
                                         src={product.imageUrl}
                                         alt={product.name}
-                                        className="w-full h-40 object-cover rounded mb-3"
+                                        className="w-full h-40 object-cover rounded-xl mb-3"
                                     />
                                 )}
                                 <h3 className="text-lg font-semibold">{product.name}</h3>

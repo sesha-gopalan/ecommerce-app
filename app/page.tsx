@@ -12,7 +12,6 @@ export default async function Home({
     orderBy: { name: "asc" },
   });
 
-  // If searching, show a flat filtered grid across all categories
   if (q) {
     const products = await prisma.product.findMany({
       where: {
@@ -26,7 +25,7 @@ export default async function Home({
     });
 
     return (
-      <main className="p-8">
+      <main className="max-w-6xl mx-auto px-6 py-10">
         <SearchBar defaultValue={q} />
         <h1 className="text-2xl font-bold mb-6">
           Results for &quot;{q}&quot;
@@ -40,7 +39,6 @@ export default async function Home({
     );
   }
 
-  // Default view: grouped by category, a few items each
   const sections = await Promise.all(
     categories.map(async (category) => {
       const products = await prisma.product.findMany({
@@ -54,7 +52,7 @@ export default async function Home({
   );
 
   return (
-    <main className="p-8">
+    <main className="max-w-6xl mx-auto px-6 py-10">
       <SearchBar defaultValue="" />
 
       {sections
@@ -65,7 +63,7 @@ export default async function Home({
               <h2 className="text-2xl font-bold">{section.category.name}</h2>
               <Link
                 href={`/category/${section.category.id}`}
-                className="text-sm text-blue-600 hover:underline"
+                className="text-sm text-indigo-600 hover:underline"
               >
                 View all →
               </Link>
@@ -85,11 +83,11 @@ function SearchBar({ defaultValue }: { defaultValue: string }) {
         name="q"
         placeholder="Search products..."
         defaultValue={defaultValue}
-        className="border rounded p-2 flex-1 max-w-md"
+        className="border rounded-full px-4 py-2.5 flex-1 max-w-md"
       />
       <button
         type="submit"
-        className="bg-black text-white rounded px-4 py-2 hover:bg-gray-800"
+        className="bg-indigo-600 text-white rounded-full px-6 py-2.5 font-medium hover:bg-indigo-700 transition"
       >
         Search
       </button>
@@ -116,12 +114,12 @@ function ProductGrid({ products }: { products: ProductWithCategory[] }) {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
       {products.map((product) => (
         <Link key={product.id} href={`/products/${product.id}`}>
-          <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+          <div className="bg-white border rounded-2xl p-4 shadow-sm hover:shadow-md transition">
             {product.imageUrl && (
               <img
                 src={product.imageUrl}
                 alt={product.name}
-                className="w-full h-40 object-cover rounded mb-3"
+                className="w-full h-40 object-cover rounded-xl mb-3"
               />
             )}
             <h3 className="text-lg font-semibold">{product.name}</h3>

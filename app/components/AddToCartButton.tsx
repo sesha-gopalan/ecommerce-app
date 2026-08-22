@@ -33,7 +33,7 @@ export default function AddToCartButton({ productId }: { productId: string }) {
     <button
       onClick={handleAddToCart}
       disabled={status === "loading"}
-      className="mt-4 bg-black text-white rounded px-4 py-2 hover:bg-gray-800 disabled:opacity-50"
+      className="mt-6 bg-indigo-600 text-white rounded-full px-6 py-3 font-medium hover:bg-indigo-700 transition disabled:opacity-50"
     >
       {status === "added" ? "Added!" : status === "loading" ? "Adding..." : "Add to Cart"}
     </button>
