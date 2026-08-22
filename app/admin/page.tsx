@@ -20,27 +20,30 @@ export default async function AdminPage() {
     });
 
     return (
-        <main className="p-8 max-w-4xl mx-auto">
-            <div className="flex gap-3">
-                <Link
-                    href="/admin/orders"
-                    className="border rounded px-4 py-2 hover:bg-gray-50"
-                >
-                    View Orders
-                </Link>
-                <Link
-                    href="/admin/products/new"
-                    className="bg-black text-white rounded px-4 py-2 hover:bg-gray-800"
-                >
-                    + Add Product
-                </Link>
+        <main className="max-w-4xl mx-auto px-6 py-10">
+            <div className="flex justify-between items-center mb-8">
+                <h1 className="text-3xl font-bold tracking-tight">Admin — Products</h1>
+                <div className="flex gap-3">
+                    <Link
+                        href="/admin/orders"
+                        className="border rounded-full px-4 py-2 hover:bg-gray-50 transition text-sm font-medium"
+                    >
+                        View Orders
+                    </Link>
+                    <Link
+                        href="/admin/products/new"
+                        className="bg-indigo-600 text-white rounded-full px-4 py-2 hover:bg-indigo-700 transition text-sm font-medium"
+                    >
+                        + Add Product
+                    </Link>
+                </div>
             </div>
 
             <div className="flex flex-col gap-3">
                 {products.map((product) => (
                     <div
                         key={product.id}
-                        className="flex justify-between items-center border rounded-lg p-4"
+                        className="flex justify-between items-center bg-white border rounded-2xl p-4 shadow-sm"
                     >
                         <div>
                             <p className="font-semibold">{product.name}</p>
@@ -50,7 +53,7 @@ export default async function AdminPage() {
                         </div>
                         <Link
                             href={`/admin/products/${product.id}/edit`}
-                            className="text-sm text-blue-600 hover:underline"
+                            className="text-sm text-indigo-600 hover:underline font-medium"
                         >
                             Edit
                         </Link>

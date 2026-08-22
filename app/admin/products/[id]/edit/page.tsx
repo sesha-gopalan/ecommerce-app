@@ -82,21 +82,21 @@ export default function EditProductPage() {
                     placeholder="Product name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                     required
                 />
                 <textarea
                     placeholder="Description"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                 />
                 <input
                     type="number"
                     placeholder="Price (₹)"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                     required
                 />
                 <input
@@ -104,7 +104,7 @@ export default function EditProductPage() {
                     placeholder="Stock quantity"
                     value={stock}
                     onChange={(e) => setStock(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                     required
                 />
                 <input
@@ -112,26 +112,26 @@ export default function EditProductPage() {
                     placeholder="Category"
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                 />
                 <input
                     type="text"
                     placeholder="Image URL (optional)"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                 />
                 <input
                     type="text"
                     placeholder="Specs, comma-separated"
                     value={specs}
                     onChange={(e) => setSpecs(e.target.value)}
-                    className="border rounded p-2"
+                    className="border rounded-lg p-2.5"
                 />
                 {error && <p className="text-red-500 text-sm">{error}</p>}
                 <button
                     type="submit"
-                    className="bg-black text-white rounded p-2 hover:bg-gray-800"
+                    className="bg-indigo-600 text-white rounded-full p-2.5 font-medium hover:bg-indigo-700 transition"
                 >
                     Save Changes
                 </button>

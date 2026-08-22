@@ -23,15 +23,18 @@ export default async function AdminOrdersPage() {
     });
 
     return (
-        <main className="p-8 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6">Admin — Orders</h1>
+        <main className="max-w-4xl mx-auto px-6 py-10">
+            <Link href="/admin" className="text-sm text-indigo-600 hover:underline">
+                ← Back to admin
+            </Link>
+            <h1 className="text-3xl font-bold tracking-tight my-6">Admin — Orders</h1>
 
             <div className="flex flex-col gap-4">
                 {orders.map((order) => (
                     <Link
                         key={order.id}
                         href={`/admin/orders/${order.id}`}
-                        className="border rounded-lg p-4 hover:shadow-md transition block"
+                        className="bg-white border rounded-2xl p-4 shadow-sm hover:shadow-md transition block"
                     >
                         <div className="flex justify-between items-center">
                             <div>
@@ -49,7 +52,9 @@ export default async function AdminOrdersPage() {
                             </div>
                             <div className="text-right">
                                 <p className="font-bold">₹{order.totalPrice}</p>
-                                <p className="text-xs text-gray-500">{order.status}</p>
+                                <span className="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded-full">
+                                    {order.status}
+                                </span>
                             </div>
                         </div>
                     </Link>

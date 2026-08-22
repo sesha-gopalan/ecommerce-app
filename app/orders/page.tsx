@@ -16,8 +16,8 @@ export default async function OrdersPage() {
     });
 
     return (
-        <main className="p-8 max-w-2xl mx-auto">
-            <h1 className="text-3xl font-bold mb-6">Your Orders</h1>
+        <main className="max-w-2xl mx-auto px-6 py-10">
+            <h1 className="text-3xl font-bold tracking-tight mb-8">Your Orders</h1>
             {orders.length === 0 ? (
                 <p className="text-gray-500">You haven't placed any orders yet.</p>
             ) : (
@@ -26,7 +26,7 @@ export default async function OrdersPage() {
                         <Link
                             key={order.id}
                             href={`/orders/${order.id}`}
-                            className="border rounded-lg p-4 hover:shadow-md transition"
+                            className="bg-white border rounded-2xl p-4 shadow-sm hover:shadow-md transition block"
                         >
                             <div className="flex justify-between items-center">
                                 <div>
@@ -44,7 +44,9 @@ export default async function OrdersPage() {
                                 </div>
                                 <div className="text-right">
                                     <p className="font-bold">₹{order.totalPrice}</p>
-                                    <p className="text-xs text-gray-500">{order.status}</p>
+                                    <span className="text-xs bg-indigo-50 text-indigo-600 px-2 py-1 rounded-full">
+                                        {order.status}
+                                    </span>
                                 </div>
                             </div>
                         </Link>

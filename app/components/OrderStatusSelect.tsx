@@ -35,7 +35,7 @@ export default function OrderStatusSelect({
             value={status}
             onChange={(e) => handleChange(e.target.value)}
             disabled={saving}
-            className="border rounded p-2"
+            className="border rounded-lg p-2.5 bg-white"
         >
             {STATUSES.map((s) => (
                 <option key={s} value={s}>
