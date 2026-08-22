@@ -16,7 +16,7 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "Not authorized" }, { status: 403 });
     }
 
-    const { name, description, price, stock, categoryName } = await request.json();
+    const { name, description, price, stock, categoryName, imageUrl } = await request.json();
 
     let categoryId: string | undefined;
     if (categoryName) {
@@ -35,6 +35,7 @@ export async function POST(request: Request) {
             price: parseFloat(price),
             stock: parseInt(stock),
             categoryId,
+            imageUrl,
         },
     });
 
@@ -46,7 +47,7 @@ export async function PATCH(request: Request) {
         return NextResponse.json({ error: "Not authorized" }, { status: 403 });
     }
 
-    const { id, name, description, price, stock, categoryName } = await request.json();
+    const { id, name, description, price, stock, categoryName, imageUrl } = await request.json();
 
     let categoryId: string | undefined;
     if (categoryName) {
@@ -66,6 +67,7 @@ export async function PATCH(request: Request) {
             price: parseFloat(price),
             stock: parseInt(stock),
             categoryId,
+            imageUrl,
         },
     });
 

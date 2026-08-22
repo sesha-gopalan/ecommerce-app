@@ -15,6 +15,7 @@ export default function EditProductPage() {
     const [categoryName, setCategoryName] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
+    const [imageUrl, setImageUrl] = useState("");
 
     useEffect(() => {
         async function loadProduct() {
@@ -25,6 +26,7 @@ export default function EditProductPage() {
             setPrice(String(data.price));
             setStock(String(data.stock));
             setCategoryName(data.category?.name || "");
+            setImageUrl(data.imageUrl || "");
             setLoading(false);
         }
         loadProduct();
@@ -37,7 +39,7 @@ export default function EditProductPage() {
         const res = await fetch("/api/admin/products", {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id, name, description, price, stock, categoryName }),
+            body: JSON.stringify({ id, name, description, price, stock, categoryName, imageUrl }),
         });
 
         if (!res.ok) {
@@ -108,6 +110,13 @@ export default function EditProductPage() {
                     placeholder="Category"
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
+                    className="border rounded p-2"
+                />
+                <input
+                    type="text"
+                    placeholder="Image URL (optional)"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
                     className="border rounded p-2"
                 />
                 {error && <p className="text-red-500 text-sm">{error}</p>}

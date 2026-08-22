@@ -13,6 +13,13 @@ export default async function Home() {
         {products.map((product) => (
           <Link key={product.id} href={`/products/${product.id}`}>
             <div className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+              {product.imageUrl && (
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="w-full h-40 object-cover rounded mb-3"
+                />
+              )}
               <h2 className="text-lg font-semibold">{product.name}</h2>
               <p className="text-sm text-gray-500">{product.category?.name}</p>
               <p className="mt-2">{product.description}</p>

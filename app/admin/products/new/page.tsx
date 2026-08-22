@@ -11,6 +11,7 @@ export default function NewProductPage() {
     const [stock, setStock] = useState("");
     const [categoryName, setCategoryName] = useState("");
     const [error, setError] = useState("");
+    const [imageUrl, setImageUrl] = useState("");
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -19,7 +20,7 @@ export default function NewProductPage() {
         const res = await fetch("/api/admin/products", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, description, price, stock, categoryName }),
+            body: JSON.stringify({ name, description, price, stock, categoryName, imageUrl }),
         });
 
         if (!res.ok) {
@@ -71,6 +72,13 @@ export default function NewProductPage() {
                     placeholder="Category (e.g. Electronics)"
                     value={categoryName}
                     onChange={(e) => setCategoryName(e.target.value)}
+                    className="border rounded p-2"
+                />
+                <input
+                    type="text"
+                    placeholder="Image URL (optional)"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
                     className="border rounded p-2"
                 />
                 {error && <p className="text-red-500 text-sm">{error}</p>}
