@@ -33,6 +33,7 @@ model Product {
   categoryId  String?
   orderItems  OrderItem[]
   cartItems CartItem[]
+  specs String[] @default([])
   createdAt   DateTime    @default(now())
 }
 

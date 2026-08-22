@@ -12,6 +12,7 @@ export default function NewProductPage() {
     const [categoryName, setCategoryName] = useState("");
     const [error, setError] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [specs, setSpecs] = useState("");
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -20,7 +21,7 @@ export default function NewProductPage() {
         const res = await fetch("/api/admin/products", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, description, price, stock, categoryName, imageUrl }),
+            body: JSON.stringify({ name, description, price, stock, categoryName, imageUrl, specs }),
         });
 
         if (!res.ok) {
@@ -79,6 +80,13 @@ export default function NewProductPage() {
                     placeholder="Image URL (optional)"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
+                    className="border rounded p-2"
+                />
+                <input
+                    type="text"
+                    placeholder="Specs, comma-separated (e.g. Intel Core i5, 16GB RAM, 512GB SSD)"
+                    value={specs}
+                    onChange={(e) => setSpecs(e.target.value)}
                     className="border rounded p-2"
                 />
                 {error && <p className="text-red-500 text-sm">{error}</p>}
