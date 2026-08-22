@@ -21,8 +21,13 @@ export default async function AdminPage() {
 
     return (
         <main className="p-8 max-w-4xl mx-auto">
-            <div className="flex justify-between items-center mb-6">
-                <h1 className="text-3xl font-bold">Admin — Products</h1>
+            <div className="flex gap-3">
+                <Link
+                    href="/admin/orders"
+                    className="border rounded px-4 py-2 hover:bg-gray-50"
+                >
+                    View Orders
+                </Link>
                 <Link
                     href="/admin/products/new"
                     className="bg-black text-white rounded px-4 py-2 hover:bg-gray-800"
